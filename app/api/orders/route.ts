@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { generateConfirmationCode, generateOrderId, isValidEmail, getPriceForProduct } from '@/lib/utils'
 import { sendEmail, getOrderConfirmationEmail } from '@/lib/email'
-import type { OrderRequest, OrderResponse } from '@/lib/types'
+import type { OrderRequest, OrderResponse, ProductType, Market } from '@/lib/types'
 
 const prisma = new PrismaClient()
 
@@ -84,11 +84,11 @@ export async function POST(request: NextRequest): Promise<NextResponse<OrderResp
         order: {
           id: order.orderId,
           email: order.email,
-          product: order.product,
-          market: order.market,
+          product: order.product as ProductType,
+          market: order.market as Market,
           confirmationCode: order.confirmationCode,
           createdAt: order.createdAt,
-          status: order.status,
+          status: order.status as 'pending' | 'paid' | 'completed',
         },
       },
       { status: 201 }
@@ -134,11 +134,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       order: {
         id: order.orderId,
         email: order.email,
-        product: order.product,
-        market: order.market,
+        product: order.product as ProductType,
+        market: order.market as Market,
         confirmationCode: order.confirmationCode,
         createdAt: order.createdAt,
-        status: order.status,
+        status: order.status as 'pending' | 'paid' | 'completed',
       },
     },
     { status: 200 }
