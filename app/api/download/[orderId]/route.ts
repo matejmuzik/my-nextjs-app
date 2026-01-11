@@ -5,6 +5,7 @@ import path from 'path'
 
 // Force dynamic rendering pro API route s parametry
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 // Řekni Next.js aby negeneroval static routes pro dynamic parametr
 export async function generateStaticParams() {
