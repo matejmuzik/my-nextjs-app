@@ -102,7 +102,7 @@ export function getOrderConfirmationEmail(
               <li>Máš 30 dní na stažení datasetu</li>
             </ul>
             
-            <a href="http://localhost:3000/api/download/${orderId}" class="button">Stáhnout soubor</a>
+            <a href="https://datlamo.cz/api/download/${orderId}" class="button">Stáhnout soubor</a>
             
             <p>Máš-li nějaké otázky, neváhej nás kontaktovat.</p>
             

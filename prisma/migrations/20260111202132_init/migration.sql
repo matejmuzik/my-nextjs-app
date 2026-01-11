@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Order" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "orderId" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "product" TEXT NOT NULL,
@@ -8,8 +8,19 @@ CREATE TABLE "Order" (
     "price" INTEGER NOT NULL,
     "confirmationCode" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'pending',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Notification" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Notification_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -23,3 +34,9 @@ CREATE INDEX "Order_email_idx" ON "Order"("email");
 
 -- CreateIndex
 CREATE INDEX "Order_orderId_idx" ON "Order"("orderId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Notification_email_key" ON "Notification"("email");
+
+-- CreateIndex
+CREATE INDEX "Notification_email_idx" ON "Notification"("email");
