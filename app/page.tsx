@@ -1,10 +1,8 @@
-import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 export default function Page() {
-  return (
-    <div className="bg-[var(--page-bg)] text-gray-100 overflow-hidden">
-      <section className="hero-section max-w-7xl mx-auto px-6 py-32">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+  redirect('/coming-soon')
+}
           <div className="md:col-span-7">
             <h1 className="text-4xl md:text-[72px] leading-tight font-extrabold text-[#047BEC] mb-6">
               Rozhoduj podle čísel, ne pocitů.
