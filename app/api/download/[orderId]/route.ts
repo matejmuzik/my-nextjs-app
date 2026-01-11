@@ -12,6 +12,8 @@ export async function generateStaticParams() {
   return []
 }
 
+export const runtime = 'nodejs'
+
 const prisma = new PrismaClient()
 
 export async function GET(
