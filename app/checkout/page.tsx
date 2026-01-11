@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { getPriceForProduct, getProductName } from '@/lib/utils'
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
@@ -114,5 +114,12 @@ export default function CheckoutPage() {
         </div>
       </section>
     </div>
+  )
+}
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="bg-[var(--page-bg)] text-white p-8">Načítání...</div>}>
+      <CheckoutContent />
+    </Suspense>
   )
 }

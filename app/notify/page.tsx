@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-export default function NotifyPage() {
+function NotifyContent() {
   const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -135,5 +135,12 @@ export default function NotifyPage() {
         </div>
       </section>
     </div>
+  )
+}
+export default function NotifyPage() {
+  return (
+    <Suspense fallback={<div className="bg-[var(--page-bg)] text-white p-8">Načítání...</div>}>
+      <NotifyContent />
+    </Suspense>
   )
 }

@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams()
   const [hasDashboard, setHasDashboard] = useState(false)
   const [orderId, setOrderId] = useState<string | null>(null)
@@ -146,5 +146,12 @@ export default function SuccessPage() {
         </div>
       </section>
     </div>
+  )
+}
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div className="bg-[var(--page-bg)] text-white p-8">Načítání...</div>}>
+      <SuccessContent />
+    </Suspense>
   )
 }
