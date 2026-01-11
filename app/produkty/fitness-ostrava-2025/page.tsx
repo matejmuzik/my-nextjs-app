@@ -163,12 +163,11 @@ export default function ProductPage() {
             </div>
 
             <a
-              href="https://app.powerbi.com/reportEmbed?reportId=d2062de1-0b29-4bbc-8c5a-67d5a221e036&autoAuth=true&ctid=5d73e7b7-b3e1-4d00-b303-056140b2a3b4"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/datasets/Dashboard%20pro%20uk%C3%A1zku.pbix"
+              download="Dashboard-pro-ukázku.pbix"
               className="block w-full border border-[#047BEC] text-[#047BEC] text-center font-semibold py-3 rounded-lg hover:bg-[#047BEC] hover:text-white transition-colors"
             >
-              Online ukázka
+              Stáhnout dashboard
             </a>
           </div>
 
