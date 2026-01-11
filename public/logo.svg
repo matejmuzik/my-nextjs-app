@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="32" viewBox="0 0 180 32" role="img" aria-label="Datlamo logo">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4" />
+      <stop offset="1" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(0,1)">
+      <path d="M12 2c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8z" fill="url(#g)" />
+      <path d="M8 18c3-4 7-5 10-3-2 1-4 2-6 4-2 1-4 0-4-1z" fill="#0369a1" opacity="0.9"/>
+    </g>
+    <text x="36" y="21" font-family="Inter, Arial, sans-serif" font-size="16" fill="#ffffff" font-weight="700">Datlamo</text>
+  </g>
+</svg>

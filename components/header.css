@@ -1,0 +1,43 @@
+.nav-link-active {
+  position: relative;
+}
+
+.nav-underline {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #047BEC, #0066cc);
+  animation: slideIn 0.4s ease-out forwards;
+  box-shadow: 0 0 8px rgba(4, 123, 236, 0.6);
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #047BEC, #0066cc);
+  transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}

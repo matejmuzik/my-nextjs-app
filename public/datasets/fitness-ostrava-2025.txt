@@ -1,0 +1,14 @@
+Fitness Ostrava 2025 - Dataset
+===============================
+
+Tento dataset obsahuje aktuální finanční data o fitness byznysu v Ostravě.
+
+ID,Gym Name,Location,Monthly Revenue,Members,Growth Rate
+1,FitnessPro,Ostrava 1,75000,110,6.1%
+2,BodyZone,Ostrava 2,65000,95,4.2%
+3,PowerGym,Ostrava 3,95000,145,9.0%
+4,HealthCare,Ostrava 4,55000,80,2.9%
+5,OlympusGym,Ostrava 5,85000,130,7.5%
+
+Data jsou platná k datu: 9.1.2026
+Zdroj: Datlamo Analytics Platform

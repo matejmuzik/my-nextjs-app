@@ -1,0 +1,10 @@
+node_modules
+
+/generated/prisma
+.env
+.env.local
+dev.db
+dev.db-shm
+dev.db-wal
+dist
+.next

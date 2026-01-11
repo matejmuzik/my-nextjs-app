@@ -1,0 +1,14 @@
+Fitness Brno 2025 - Dataset
+============================
+
+Tento dataset obsahuje aktuální finanční data o fitness byznysu v Brně.
+
+ID,Gym Name,Location,Monthly Revenue,Members,Growth Rate
+1,FitnessPro,Brno 1,95000,140,7.2%
+2,BodyZone,Brno 2,85000,120,5.1%
+3,PowerGym,Brno 3,120000,180,10.3%
+4,HealthCare,Brno 4,65000,95,3.8%
+5,OlympusGym,Brno 5,105000,155,8.4%
+
+Data jsou platná k datu: 9.1.2026
+Zdroj: Datlamo Analytics Platform

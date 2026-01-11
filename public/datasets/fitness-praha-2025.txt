@@ -1,0 +1,14 @@
+Fitness Praha 2025 - Dataset
+=============================
+
+Tento dataset obsahuje aktuální finanční data o fitness byznysu v Praze.
+
+ID,Gym Name,Location,Monthly Revenue,Members,Growth Rate
+1,FitnessPro,Praha 1,150000,200,8.5%
+2,BodyZone,Praha 2,120000,180,6.2%
+3,PowerGym,Praha 3,180000,250,12.1%
+4,HealthCare,Praha 4,95000,140,4.3%
+5,OlympusGym,Praha 5,165000,230,9.7%
+
+Data jsou platná k datu: 9.1.2026
+Zdroj: Datlamo Analytics Platform
