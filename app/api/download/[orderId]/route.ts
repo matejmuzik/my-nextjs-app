@@ -3,6 +3,9 @@ import { PrismaClient } from '@prisma/client'
 import { readFile } from 'fs/promises'
 import path from 'path'
 
+// Force dynamic rendering pro API route s parametry
+export const dynamic = 'force-dynamic'
+
 const prisma = new PrismaClient()
 
 export async function GET(
