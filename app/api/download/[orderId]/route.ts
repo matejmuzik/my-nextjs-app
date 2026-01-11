@@ -6,6 +6,11 @@ import path from 'path'
 // Force dynamic rendering pro API route s parametry
 export const dynamic = 'force-dynamic'
 
+// Řekni Next.js aby negeneroval static routes pro dynamic parametr
+export async function generateStaticParams() {
+  return []
+}
+
 const prisma = new PrismaClient()
 
 export async function GET(
