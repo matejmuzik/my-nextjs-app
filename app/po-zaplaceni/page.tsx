@@ -11,13 +11,15 @@ function SuccessContent() {
   const [email, setEmail] = useState<string | null>(null)
 
   useEffect(() => {
-    const product = searchParams.get('product')
-    const orderIdParam = searchParams.get('orderId')
-    const emailParam = searchParams.get('email')
-    
-    setHasDashboard(product === 'dashboard' || product === 'bundle')
-    setOrderId(orderIdParam)
-    setEmail(emailParam)
+    if (searchParams) {
+      const product = searchParams.get('product')
+      const orderIdParam = searchParams.get('orderId')
+      const emailParam = searchParams.get('email')
+      
+      setHasDashboard(product === 'dashboard' || product === 'bundle')
+      setOrderId(orderIdParam)
+      setEmail(emailParam)
+    }
   }, [searchParams])
 
   return (

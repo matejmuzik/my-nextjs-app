@@ -11,7 +11,7 @@ function NotifyContent() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const market = searchParams.get('market') || 'praha'
+  const market = (searchParams?.get('market') || 'praha') as string
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

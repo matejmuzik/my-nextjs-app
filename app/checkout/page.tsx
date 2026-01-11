@@ -13,8 +13,8 @@ function CheckoutContent() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const market = searchParams.get('market') || 'praha'
-  const product = searchParams.get('product') || 'dataset'
+  const market = (searchParams?.get('market') || 'praha') as string
+  const product = (searchParams?.get('product') || 'dataset') as string
   const price = getPriceForProduct(product, market)
   const productName = getProductName(market, product)
 
