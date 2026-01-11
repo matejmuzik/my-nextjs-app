@@ -4,6 +4,8 @@ import { generateConfirmationCode, generateOrderId, isValidEmail, getPriceForPro
 import { sendEmail, getOrderConfirmationEmail } from '@/lib/email'
 import type { OrderRequest, OrderResponse, ProductType, Market } from '@/lib/types'
 
+export const dynamic = 'force-dynamic'
+
 const prisma = new PrismaClient()
 
 export async function POST(request: NextRequest): Promise<NextResponse<OrderResponse>> {

@@ -1,5 +1,7 @@
 import { sendEmail } from '@/lib/email';
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();

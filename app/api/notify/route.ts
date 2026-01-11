@@ -3,6 +3,8 @@ import { PrismaClient } from '@prisma/client'
 import { isValidEmail } from '@/lib/utils'
 import { sendEmail, getNotificationEmail } from '@/lib/email'
 
+export const dynamic = 'force-dynamic'
+
 const prisma = new PrismaClient()
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
