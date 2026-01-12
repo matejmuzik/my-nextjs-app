@@ -11,7 +11,7 @@ export default function ComingSoonLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="cs" suppressHydrationWarning>
+    <html lang="cs">
       <body className="bg-[#0B0C10]">
         {children}
       </body>

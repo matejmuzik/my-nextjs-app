@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Datlamo – Brzy pro vás otevřeme',
+  description: 'Připravujeme se. Brzy budeme online.',
+}
+
 export default function ComingSoon() {
   return (
     <div className="min-h-screen bg-[var(--page-bg)] text-gray-100 flex items-center justify-center px-6">
