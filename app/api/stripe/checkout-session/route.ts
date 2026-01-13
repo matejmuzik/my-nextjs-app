@@ -1,8 +1,6 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
 export async function POST(request: NextRequest) {
   try {
     const { amount, orderId, email, product, market } = await request.json()
@@ -16,7 +14,16 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('[Checkout Session] STRIPE_SECRET_KEY exists:', !!process.env.STRIPE_SECRET_KEY)
+    if (!process.env.STRIPE_SECRET_KEY) {
+      console.error('[Checkout Session] STRIPE_SECRET_KEY is not set')
+      return NextResponse.json(
+        { error: 'Server error: Missing Stripe key' },
+        { status: 500 }
+      )
+    }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+    console.log('[Checkout Session] Stripe initialized')
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
