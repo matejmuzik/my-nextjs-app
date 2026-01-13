@@ -9,18 +9,60 @@ function SuccessContent() {
   const [hasDashboard, setHasDashboard] = useState(false)
   const [orderId, setOrderId] = useState<string | null>(null)
   const [email, setEmail] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (searchParams) {
-      const product = searchParams.get('product')
+      const sessionId = searchParams.get('session_id')
       const orderIdParam = searchParams.get('orderId')
       const emailParam = searchParams.get('email')
       
-      setHasDashboard(product === 'dashboard' || product === 'bundle')
       setOrderId(orderIdParam)
       setEmail(emailParam)
+
+      // Pokud je session_id, potvrď platbu
+      if (sessionId) {
+        confirmPayment(sessionId)
+      } else {
+        setLoading(false)
+      }
     }
   }, [searchParams])
+
+  const confirmPayment = async (sessionId: string) => {
+    try {
+      const response = await fetch('/api/stripe/confirm-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        setError(data.error || 'Chyba při potvrzování platby')
+      } else {
+        // Vyčisti localStorage
+        localStorage.removeItem('checkout_email')
+        localStorage.removeItem('checkout_market')
+        localStorage.removeItem('checkout_product')
+        localStorage.removeItem('checkout_price')
+
+        // Zjisti co se stáhlo z session
+        const sessionResponse = await fetch(`/api/stripe/get-session?sessionId=${sessionId}`)
+        if (sessionResponse.ok) {
+          const sessionData = await sessionResponse.json()
+          if (sessionData.orderId) {
+            setOrderId(sessionData.orderId)
+          }
+        }
+      }
+    } catch (err: any) {
+      setError(err.message || 'Chyba při ověřování platby')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="bg-[var(--page-bg)] text-gray-100 overflow-hidden">
@@ -43,7 +85,15 @@ function SuccessContent() {
         <div className="bg-gray-900/30 border border-gray-700 rounded-lg p-8 mb-16 text-center">
           <h2 className="text-2xl font-bold text-white mb-6">Stáhnout datový balíček</h2>
           
-          {orderId ? (
+          {loading && (
+            <p className="text-gray-400">Ověřuji vaši platbu...</p>
+          )}
+
+          {error && (
+            <p className="text-red-400 bg-red-900/30 border border-red-500 rounded p-4">{error}</p>
+          )}
+          
+          {!loading && !error && orderId ? (
             <>
               <a
                 href={`/api/download/${orderId}`}

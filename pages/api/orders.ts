@@ -58,35 +58,15 @@ export default async function handler(
           market: body.market,
           price,
           confirmationCode,
-          status: 'completed',
+          status: 'pending', // Nastav na pending - email se pošle až po potvrzení platby
         },
       })
 
-      console.log(`[Orders] Created order: ${order.orderId} for ${order.email}`)
-
-      // Odeslat potvrzovací email
-      const emailHtml = getOrderConfirmationEmail(
-        body.email,
-        orderId,
-        confirmationCode,
-        body.product,
-        body.market,
-        price
-      )
-
-      const emailResult = await sendEmail({
-        to: body.email,
-        subject: `✓ Objednávka potvrena - ${orderId}`,
-        html: emailHtml,
-      })
-
-      if (!emailResult.success) {
-        console.warn('[Orders] Email failed to send:', emailResult.error)
-      }
+      console.log(`[Orders] Created order: ${order.orderId} for ${order.email} - PENDING PAYMENT`)
 
       return res.status(201).json({
         success: true,
-        message: `Objednávka vytvořena. Potvrzovací kód: ${confirmationCode}`,
+        message: `Objednávka vytvořena. Čekám na potvrzení platby.`,
         order: {
           id: order.orderId,
           email: order.email,
@@ -94,7 +74,7 @@ export default async function handler(
           market: order.market as Market,
           confirmationCode: order.confirmationCode,
           createdAt: order.createdAt,
-          status: order.status as 'pending' | 'paid' | 'completed',
+          status: 'pending' as const,
         },
       })
     } catch (error) {
