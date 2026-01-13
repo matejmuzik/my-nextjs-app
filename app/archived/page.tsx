@@ -300,7 +300,7 @@ mb-6">
         <img src="/Basket.svg" alt="Basket" className="w-16 h-16 mb-3 opacity-80 mx-auto" />   
         <h3 className="text-3xl font-bold text-white mb-2">Zvolte produkt</h3>
         <p className="text-gray-400 text-lg">
-          Vyberte si dataset nebo dataset s interaktivním dashboardem.
+          Vyberte si dataset nebo dataset s interaktivním. dashboardem.
         </p>
       </div>
 

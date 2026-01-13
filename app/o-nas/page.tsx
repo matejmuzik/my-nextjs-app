@@ -24,7 +24,7 @@ export default function AboutPage() {
               href="/kontakt"
               className="flex-1 border border-gray-600 text-gray-200 px-6 py-3 rounded-lg font-semibold text-sm md:text-lg hover:bg-gray-800 transition-colors text-center"
             >
-              Kontaktujte nás zde.
+              Kontaktujte nás zde
             </Link>
           </div>
         </div>
