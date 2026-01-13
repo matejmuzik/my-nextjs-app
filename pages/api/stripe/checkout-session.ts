@@ -51,8 +51,16 @@ export default async function handler(
       },
     })
 
+    console.log('[Checkout Session] Created session:', session.id, 'URL:', session.url)
+
+    if (!session.url) {
+      return res.status(500).json({
+        error: 'Stripe session nevrátil URL',
+      })
+    }
+
     return res.status(200).json({
-      url: session.url || '',
+      url: session.url,
     })
   } catch (error: any) {
     console.error('Stripe Checkout error:', error)
