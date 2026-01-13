@@ -1,34 +1,44 @@
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
 
+// ⚠️ CRITICAL: Disable Edge Runtime - Stripe requires Node.js
+export const runtime = 'nodejs'
+
 export async function POST(request: NextRequest) {
   try {
     const { amount, orderId, email, product, market } = await request.json()
     
-    console.log('[Checkout Session] Received request:', { amount, orderId, email, product, market })
+    console.log('[Checkout Session] Received POST request:', { amount, orderId, email, product, market })
+    console.log('[Checkout Session] Runtime:', process.env.NODE_ENV)
     console.log('[Checkout Session] ENV check:', {
       hasStripeKey: !!process.env.STRIPE_SECRET_KEY,
-      hasPublishableKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-      stripeKeyStart: process.env.STRIPE_SECRET_KEY?.substring(0, 10),
+      stripeKeyPrefix: process.env.STRIPE_SECRET_KEY?.substring(0, 8),
     })
 
     if (!amount || !orderId || !email) {
+      console.warn('[Checkout Session] Missing required fields')
       return NextResponse.json(
-        { error: 'Chybí povinné pole' },
+        { error: 'Chybí povinné pole (amount, orderId, email)' },
         { status: 400 }
       )
     }
 
     if (!process.env.STRIPE_SECRET_KEY) {
-      console.error('[Checkout Session] STRIPE_SECRET_KEY is not set in environment')
+      console.error('[Checkout Session] STRIPE_SECRET_KEY environment variable is missing!')
+      console.error('[Checkout Session] Available env vars:', Object.keys(process.env).filter(k => k.includes('STRIPE')))
       return NextResponse.json(
-        { error: 'Server error: Missing STRIPE_SECRET_KEY. Please check Vercel environment variables.' },
+        { error: 'Chyba serveru: STRIPE_SECRET_KEY není nastavený ve Vercel Environment Variables' },
         { status: 500 }
       )
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-    console.log('[Checkout Session] Stripe initialized')
+    // Initialize Stripe with explicit options
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2024-06-20' as any,
+      httpClient: undefined,
+    })
+    
+    console.log('[Checkout Session] ✅ Stripe initialized successfully')
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
