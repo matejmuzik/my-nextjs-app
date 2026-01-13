@@ -74,13 +74,21 @@ export default function PaymentPage() {
       })
 
       if (!checkoutResponse.ok) {
-        const data = await checkoutResponse.json()
-        setError(data.error || 'Chyba při vytváření platby')
+        const text = await checkoutResponse.text()
+        console.error('[Checkout] Response status:', checkoutResponse.status)
+        console.error('[Checkout] Response text:', text)
+        try {
+          const data = JSON.parse(text)
+          setError(data.error || 'Chyba při vytváření platby')
+        } catch {
+          setError(`Chyba serveru (${checkoutResponse.status}): ${text.substring(0, 100)}`)
+        }
         setLoading(false)
         return
       }
 
       const { url } = await checkoutResponse.json()
+      console.log('[Checkout] Session URL:', url)
 
       // 3. Přesměruj na Stripe Checkout
       if (url) {

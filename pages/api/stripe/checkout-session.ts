@@ -18,12 +18,15 @@ export default async function handler(
 
   try {
     const { amount, orderId, email, product, market } = req.body
+    console.log('[Checkout Session] Received request:', { amount, orderId, email, product, market })
 
     if (!amount || !orderId || !email) {
       return res.status(400).json({ 
         error: 'Chybí povinné pole' 
       })
     }
+
+    console.log('[Checkout Session] STRIPE_SECRET_KEY exists:', !!process.env.STRIPE_SECRET_KEY)
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
