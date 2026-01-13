@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     console.log('[Checkout Session] ✅ Stripe initialized successfully')
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'apple_pay', 'google_pay'],
+      payment_method_types: ['card'] as any,
       line_items: [
         {
           price_data: {
