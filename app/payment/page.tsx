@@ -143,7 +143,7 @@ export default function PaymentPage() {
             disabled={loading}
             className="w-full bg-[#047BEC] text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {loading ? 'Zpracovávám...' : 'Pokračovat k platbě (Karta, Apple Pay, Google Pay)'}
+            {loading ? 'Zpracovávám...' : 'Pokračovat k platbě'}
           </button>
 
           <button
