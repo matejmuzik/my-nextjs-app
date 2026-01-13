@@ -6,6 +6,11 @@ export async function POST(request: NextRequest) {
     const { amount, orderId, email, product, market } = await request.json()
     
     console.log('[Checkout Session] Received request:', { amount, orderId, email, product, market })
+    console.log('[Checkout Session] ENV check:', {
+      hasStripeKey: !!process.env.STRIPE_SECRET_KEY,
+      hasPublishableKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      stripeKeyStart: process.env.STRIPE_SECRET_KEY?.substring(0, 10),
+    })
 
     if (!amount || !orderId || !email) {
       return NextResponse.json(
@@ -15,9 +20,9 @@ export async function POST(request: NextRequest) {
     }
 
     if (!process.env.STRIPE_SECRET_KEY) {
-      console.error('[Checkout Session] STRIPE_SECRET_KEY is not set')
+      console.error('[Checkout Session] STRIPE_SECRET_KEY is not set in environment')
       return NextResponse.json(
-        { error: 'Server error: Missing Stripe key' },
+        { error: 'Server error: Missing STRIPE_SECRET_KEY. Please check Vercel environment variables.' },
         { status: 500 }
       )
     }
