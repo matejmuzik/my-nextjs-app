@@ -27,6 +27,13 @@ export default function Page() {
             >
               Prozkoumat trhy
             </Link>
+
+            <Link
+              href="#ukazka-produktu"
+              className="inline-block ml-4 border border-[#047BEC] text-[#047BEC] px-6 py-3 rounded-lg font-semibold text-sm md:text-lg hover:bg-[#047BEC] hover:text-white transition-colors"
+            >
+              Chci ukázku
+            </Link>
           </div>
 
           <div className="hidden md:block md:col-span-5 relative">
