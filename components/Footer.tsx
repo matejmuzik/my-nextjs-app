@@ -64,7 +64,8 @@ export default function Footer(): JSX.Element {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-gray-500 border-t border-gray-800">
-        © 2025 Datlamo. Všechna práva vyhrazena.
+        <p>© 2025 Datlamo. Všechna práva vyhrazena.</p>
+        <p className="mt-2">IČO: 24369497</p>
       </div>
     </footer>
   )
