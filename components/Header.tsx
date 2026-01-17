@@ -20,7 +20,7 @@ export default function Header(): JSX.Element {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--page-bg)] border-b border-blue-500/50 shadow-[0_6px_20px_rgba(4,123,236,0.12)]">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between bg-[var(--page-bg)]">
         <Link href="/" className="flex items-center gap-3">
-           <img src="/Brand-logo.svg" alt="Datlamo" className="h-16 w-auto" />
+           <img src="/Brand-logo.svg" alt="Datlamo" className="h-12 w-auto" />
         </Link>
 
         <nav aria-label="Primary">

@@ -57,7 +57,7 @@ export default function ProduktyPage() {
     },
     {
       id: 6,
-      title: 'Auto půjčovny',
+      title: 'Autopůjčovny',
       description: 'Připravujeme strukturovaný dataset třídů autopůjčoven: ceny pronájmu, typy vozů, podmínky a reputace.',
       tag: 'Brzy',
       tagColor: 'bg-yellow-700',

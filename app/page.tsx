@@ -127,7 +127,7 @@ export default function Page() {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2 leading-tight">Indexy (cena,reputace,<br /> Value for Money atd.)</h3>
                   <p className="text-gray-400 text-lg">
-                    Standardizované metriky, které umožňují rychlé a férové srovnění podniků v celém trhu.
+                    Standardizované metriky, které umožňují rychlé a férové srovnání podniků v celém trhu.
                   </p>
                 </div>
               </div>
