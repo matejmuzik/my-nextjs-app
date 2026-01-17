@@ -66,6 +66,7 @@ function CheckoutContent() {
                 </div>
                 <div className="text-right">
                   <p className="text-3xl font-bold text-[#047BEC]">{price} Kč</p>
+                  <p className="text-gray-400 text-xs mt-2">bez DPH*</p>
                 </div>
               </div>
             </div>
@@ -103,6 +104,10 @@ function CheckoutContent() {
               >
                 {loading ? 'Zpracovávám...' : `Pokračovat k zaplacení → ${price} Kč`}
               </button>
+
+              <p className="text-gray-500 text-xs text-center mt-4">
+                * Jsem OSVČ bez registrace k DPH
+              </p>
             </form>
           </div>
 
