@@ -18,7 +18,7 @@ export default function Page() {
 
             <p className="text-gray-400 mt-6 mb-8 text-base md:text-lg max-w-2xl">
               Přesná tržní data a přehledné dashboardy, které vám pomohou
-              nastavit ceny, sledovat konkurenci a plánovat růst.
+              nastavit ceny, sledovat konkurenci a plánovat růst. Získejte přístup k největšímu veřejně dostupnému přehledu trhu.
             </p>
 
             <Link
