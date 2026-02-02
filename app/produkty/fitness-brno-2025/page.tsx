@@ -29,7 +29,7 @@ export default function ProductPage() {
             </div>
             
             <div className="mb-6">
-              <div className="text-4xl font-bold text-white mb-2">990 Kč</div>
+              <div className="text-4xl font-bold text-white mb-2">690 Kč</div>
               <p className="text-gray-400 text-sm">Jednorazový nákup</p>
             </div>
 
@@ -53,7 +53,7 @@ export default function ProductPage() {
             </div>
             
             <div className="mb-6">
-              <div className="text-4xl font-bold text-white mb-2">1 990 Kč</div>
+              <div className="text-4xl font-bold text-white mb-2">1 690 Kč</div>
               <p className="text-gray-400 text-sm">Jednorazový nákup</p>
             </div>
 
