@@ -15,9 +15,9 @@ export function isValidEmail(email: string): boolean {
 
 export function getPriceForProduct(product: string, market: string): number {
   const prices: Record<string, Record<string, number>> = {
-    praha: { dataset: 1490, bundle: 2490 },
-    brno: { dataset: 990, bundle: 1990 },
-    ostrava: { dataset: 690, bundle: 1690 },
+    praha: { dataset: 990, bundle: 1990 },
+    brno: { dataset: 690, bundle: 1690 },
+    ostrava: { dataset: 490, bundle: 1490 },
   }
   return prices[market]?.[product] || 0
 }
